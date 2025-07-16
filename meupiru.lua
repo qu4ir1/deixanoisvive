@@ -88,7 +88,7 @@ end
 
 getgenv().ExunysDeveloperAimbot = {
 	DeveloperSettings = {
-		UpdateMode = "RenderStepped",
+		UpdateMode = "Heartbeat",
 		TeamCheckOption = "TeamColor",
 		RainbowSpeed = 1 -- Bigger = Slower
 	},
