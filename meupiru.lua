@@ -267,6 +267,9 @@ local Load = function()
 
 		if Running and Settings.Enabled then
 			GetClosestPlayer()
+
+			Offset = OffsetToMoveDirection and (pcall(function() return __index(FindFirstChildOfClass(__index(Environment.Locked, "Character"), "Humanoid"), "MoveDirection") * (mathclamp(Settings.OffsetIncrement, 1, 30) / 10) end) and select(2, pcall(function() return __index(FindFirstChildOfClass(__index(Environment.Locked, "Character"), "Humanoid"), "MoveDirection") * (mathclamp(Settings.OffsetIncrement, 1, 30) / 10) end)) or Vector3zero) or Vector3zero
+
 				
 			if Environment.Locked then
 				local LockedPosition_Vector3 = __index(__index(Environment.Locked, "Character")[LockPart], "Position")
