@@ -268,7 +268,8 @@ local Load = function()
 		if Running and Settings.Enabled then
 			GetClosestPlayer()
 
-			Offset = OffsetToMoveDirection and (__index(Environment.Locked, "Character") and FindFirstChildOfClass(__index(Environment.Locked, "Character"), "Humanoid") and __index(FindFirstChildOfClass(__index(Environment.Locked, "Character"), "Humanoid"), "MoveDirection") or Vector3zero) * (mathclamp(Settings.OffsetIncrement, 1, 30) / 10) or Vector3zero
+			Offset = OffsetToMoveDirection and (__index(FindFirstChildOfClass(__index(Environment.Locked, "Character") or {}, "Humanoid") or {}, "MoveDirection") or Vector3zero) * (math.clamp(Settings.OffsetIncrement, 1, 30) / 10) or Vector3zero
+
 
 
 
