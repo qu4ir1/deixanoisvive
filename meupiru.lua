@@ -268,10 +268,8 @@ local Load = function()
 		if Running and Settings.Enabled then
 			GetClosestPlayer()
 
-			local Offset = OffsetToMoveDirection and Environment.Locked and Environment.Locked.Character and Environment.Locked.Character:FindFirstChildOfClass("Humanoid") and Environment.Locked.Character:FindFirstChildOfClass("Humanoid").MoveDirection * (math.clamp(Settings.OffsetIncrement, 1, 30) / 10) or Vector3.zero
-
-
-
+			Offset = OffsetToMoveDirection and (function() local char = __index(Environment.Locked, "Character") if not char then return nil end local humanoid = FindFirstChildOfClass(char, "Humanoid") if not humanoid then return nil end local moveDir = __index(humanoid, "MoveDirection") if not moveDir then return nil end return moveDir * (mathclamp(Settings.OffsetIncrement, 1, 30) / 10) end)() or Vector3zero
+				
 			if Environment.Locked then
 				local LockedPosition_Vector3 = __index(__index(Environment.Locked, "Character")[LockPart], "Position")
 				local LockedPosition = WorldToViewportPoint(Camera, LockedPosition_Vector3 + Offset)
